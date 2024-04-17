@@ -21,8 +21,8 @@ dependencies {
     implementation("io.micronaut.groovy:micronaut-runtime-groovy")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
-    implementation('javax:javaee-api:8.0')
-    implementation ('javax.transaction:jta:1.1')
+    implementation('jakarta.platform:jakarta.jakartaee-api:8.0.0')
+    implementation('jakarta.transaction:jakarta.transaction-api:1.3.3')
     implementation("io.micronaut.flyway:micronaut-flyway")
     compileOnly("io.micronaut:micronaut-http-client")
     compileOnly("io.micronaut:micronaut-http-validation")
@@ -30,17 +30,6 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.postgresql:postgresql")
     testImplementation("io.micronaut:micronaut-http-client")
-}
-
-sourceSets {
-    main {
-        groovy {
-            srcDirs = ['src/main/groovy', 'src/main/java']
-        }
-        java {
-            srcDirs = []
-        }
-    }
 }
 
 
@@ -62,8 +51,6 @@ micronaut {
         annotations("com.example.*")
     }
     aot {
-    // Please review carefully the optimizations enabled below
-    // Check https://micronaut-projects.github.io/micronaut-aot/latest/guide/ for more details
         optimizeServiceLoading = false
         convertYamlToJava = false
         precomputeOperations = true

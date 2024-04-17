@@ -1,10 +1,6 @@
 package com.example.domain
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import io.micronaut.core.annotation.Introspected
+import jakarta.persistence.*
 
 @Entity
 class Book {

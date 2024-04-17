@@ -8,38 +8,38 @@ import com.example.domain.BookRepository
 @Singleton
 class BookService {
 
-    private final BookRepository bookRepository
+    private final BookRepository bookRepository;
 
     BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository
+        this.bookRepository = bookRepository;
     }
 
     Book saveBook(Book book) {
-        book.availability = true  // Ensure books are always available when added
-        bookRepository.save(book)
+        book.setAvailable(true); // Make sure you have setter method or direct access is allowed.
+        return bookRepository.save(book); // Return the saved book.
     }
 
     Iterable<Book> listBooks() {
-        bookRepository.findAll()
+        return bookRepository.findAll(); // Return the result of findAll.
     }
 
     @Transactional
     Book borrowBook(Long id) throws IllegalStateException {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book not found"))
-        if (!book.available) {
-            throw new IllegalStateException("Book is already borrowed")
+        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book not found"));
+        if (!book.getAvailable()) { // Assuming 'available' has getter method.
+            throw new IllegalStateException("Book is already borrowed");
         }
-        book.available = false
-        return bookRepository.update(book)
+        book.setAvailable(false); // Use setters if available.
+        return bookRepository.update(book); // Return the updated book.
     }
 
     @Transactional
     Book returnBook(Long id) throws IllegalStateException {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book not found"))
-        if (book.available) {
-            throw new IllegalStateException("Book is already returned")
+        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book not found"));
+        if (book.getAvailable()) { // Again, assuming getters and setters are used.
+            throw new IllegalStateException("Book is already returned");
         }
-        book.available = true
-        return bookRepository.update(book)
+        book.setAvailable(true);
+        return bookRepository.update(book); // Return the updated book.
     }
 }

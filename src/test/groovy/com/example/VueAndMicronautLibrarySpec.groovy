@@ -1,19 +1,19 @@
-// package com.example
+package com.example
 
-// import io.micronaut.runtime.EmbeddedApplication
-// import io.micronaut.test.extensions.spock.annotation.MicronautTest
-// import spock.lang.Specification
-// import jakarta.inject.Inject
+import io.micronaut.runtime.EmbeddedApplication
+import io.micronaut.test.extensions.spock.annotation.MicronautTest
+import spock.lang.Specification
+import jakarta.inject.Inject
 
-// @MicronautTest
-// class VueAndMicronautLibrarySpec extends Specification {
+@MicronautTest
+class VueAndMicronautLibrarySpec extends Specification {
 
-//     @Inject
-//     EmbeddedApplication<?> application
+    @Inject
+    EmbeddedApplication<?> application
 
-//     void 'test it works'() {
-//         expect:
-//         application.running
-//     }
+    void 'test it works'() {
+        expect:
+        application.running
+    }
 
-// }
+}
