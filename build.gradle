@@ -21,6 +21,9 @@ dependencies {
     implementation("io.micronaut.groovy:micronaut-runtime-groovy")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation('javax:javaee-api:8.0')
+    implementation ('javax.transaction:jta:1.1')
+    implementation("io.micronaut.flyway:micronaut-flyway")
     compileOnly("io.micronaut:micronaut-http-client")
     compileOnly("io.micronaut:micronaut-http-validation")
     compileOnly("io.micronaut.serde:micronaut-serde-processor")
@@ -29,13 +32,24 @@ dependencies {
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src/main/groovy', 'src/main/java']
+        }
+        java {
+            srcDirs = []
+        }
+    }
+}
+
 
 application {
     mainClass.set("com.example.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("21")
-    targetCompatibility = JavaVersion.toVersion("21")
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
 }
 
 
@@ -61,11 +75,11 @@ micronaut {
 }
 
 tasks.named("dockerfile") {
-    baseImage("eclipse-temurin:21-jre-jammy")
+    baseImage("eclipse-temurin:17-jre-jammy")
 }
 
 tasks.named("dockerfileNative") {
-    jdkVersion = "21"
+    jdkVersion = "17"
 }
 
 
