@@ -1,40 +1,55 @@
-## Micronaut 4.3.8 Documentation
+# Vue and Micronaut Library Management System
 
-- [User Guide](https://docs.micronaut.io/4.3.8/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.3.8/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.3.8/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+## Description
+This project is the backend for a library management system built using the Micronaut framework. It manages books, handles operations like borrow and return.
 
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
-## Feature micronaut-aot documentation
+## Features
+- Book management (add, list, delete)
+- Borrow and return functionalities
+- RESTful API
+- Automated CRUD operations for database management
 
-- [Micronaut AOT documentation](https://micronaut-projects.github.io/micronaut-aot/latest/guide/)
+## Technology Stack
+- **Micronaut**: Framework for building microservices.
+- **PostgreSQL**: Database for storing book records.
+- **Hibernate**: ORM tool for database interaction.
 
+## Installation
 
-## Feature jdbc-hikari documentation
+### Prerequisites
+- JDK 11 or later
+- PostgreSQL
+- Gradle or compatible build tool
 
-- [Micronaut Hikari JDBC Connection Pool documentation](https://micronaut-projects.github.io/micronaut-sql/latest/guide/index.html#jdbc)
+### Environment Setup
+Set the following environment variables for your database connection:
+shell
+export DB_HOST="localhost"
+export DB_USERNAME="library_user"
+export DB_PASSWORD="librarytest"
 
+### Getting Started
+Follow these instructions to get your application up and running on your local machine for development and testing purposes.
 
-## Feature management documentation
+- Clone the repository: git clone https://github.com/rasmusvark/library_back.git
 
-- [Micronaut Management documentation](https://docs.micronaut.io/latest/guide/index.html#management)
+- Configure PostgreSQL: Ensure that PostgreSQL is running and the environment variables are set correctly as mentioned above.
 
+- Run the application: ./gradlew run
 
-## Feature hibernate-validator documentation
+This command will start the server on the default Micronaut port, typically http://localhost:8080.
 
-- [Micronaut Hibernate Validator documentation](https://micronaut-projects.github.io/micronaut-hibernate-validator/latest/guide/index.html)
+### API Endpoints
+The application provides various REST endpoints for managing books and their borrowal status. Here are some of the key endpoints:
 
+- POST /books/: Add a new book to the system.
+- GET /books/: Retrieve all books.
+- PATCH /books/{id}/borrow: Mark a book as borrowed.
+- PATCH /books/{id}/return: Mark a book as returned.
+- DELETE /books/{id}: Delete a book from the system.
 
-## Feature serialization-jackson documentation
+### Health Check
+Access the health check endpoint at http://localhost:8080/health to see the health status of the application and connected services.
 
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
-
-
-## Feature test-resources documentation
-
-- [Micronaut Test Resources documentation](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/)
-
-
+### Development Notes
+Adjust configurations such as database details and server port in the application's application.properties file as necessary.
