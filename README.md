@@ -28,6 +28,14 @@ export DB_HOST="localhost"
 export DB_USERNAME="library_user"
 export DB_PASSWORD="librarytest"
 
+### CORS Configuration
+
+If you're running the frontend of the application on a different origin (domain, scheme, or port), you need to update the CORS configuration in the `application.properties` file to allow requests from the frontend. 
+
+Find the following line in the `application.properties` file:
+
+micronaut.server.cors.configurations.web.allowed-origins=http://localhost:8081
+
 ### Getting Started
 Follow these instructions to get your application up and running on your local machine for development and testing purposes.
 

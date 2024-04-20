@@ -103,7 +103,6 @@ class BookController {
     @Options("/{+path}")
     HttpResponse options(String path) {
         return HttpResponse.ok()
-            .header(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "http://localhost:8081")
             .header(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "POST, GET, PUT, PATCH, DELETE, OPTIONS")
             .header(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "Authorization, Content-Type")
             .header(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true")
